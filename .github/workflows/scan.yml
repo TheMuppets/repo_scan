@@ -1,0 +1,24 @@
+name: scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        required: true
+        type: string
+      branch:
+        required: true
+        type: string
+      commits:
+        required: true
+        type: string
+
+jobs:
+  scan:
+    runs-on: ubuntu-slim
+
+    steps:
+    - uses: actions/checkout@v6
+    - run: ./main.py '${{ inputs.repo }}' '${{ inputs.branch }}' '${{ inputs.commits }}'
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
