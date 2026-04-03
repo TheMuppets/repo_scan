@@ -25,12 +25,12 @@ def check_file(path: str) -> bool:
 
     for x, fn in {
         "*.lic": check_lic,
-        "*megface*": check_megvii,
-        "*megjpeg*": check_megvii,
-        "*megskeleton*": check_megvii,
-        "*megvii*": check_megvii,
-        "*mgbeauty*": check_megvii,
-        "*mgface*": check_megvii,
+        "libmegface*": check_megvii,
+        "libmegjpeg*": check_megvii,
+        "libmegskeleton*": check_megvii,
+        "libmegvii*": check_megvii,
+        "libmgbeauty*": check_megvii,
+        "libmgface*": check_megvii,
     }.items():
         if fnmatch.fnmatch(file_name, x):
             ret |= fn(open(path, "rb").read())
