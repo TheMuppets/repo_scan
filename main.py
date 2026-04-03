@@ -32,7 +32,7 @@ def check_file(path: str) -> bool:
         "libmgbeauty*": check_megvii,
         "libmgface*": check_megvii,
     }.items():
-        if fnmatch.fnmatch(file_name, x):
+        if fnmatch.fnmatch(file_name.lower(), x):
             ret |= fn(open(path, "rb").read())
 
     return ret
